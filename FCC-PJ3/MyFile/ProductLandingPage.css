@@ -1,0 +1,387 @@
+/* 设置全局属性 */
+
+/* @import方式导入外部CSS文件,和在HTML里导入一样 */
+@import "https://fonts.googleapis.com/css?family=Lato:400,700";
+
+* {
+    margin: 0;
+    padding: 0;
+    /* border-box,方便计算 */
+    box-sizing: border-box;
+}
+
+/* 设置全局背景色 */
+body {
+    background-color: #eee;
+}
+
+/* 顶层父盒子上relative属性,父相子绝 */
+#page-wrapper {
+    position: relative;
+}
+
+/* list-style:更改list类型.去掉圆点 */
+li {
+    list-style: none;
+}
+
+/* text-decoration: 去掉a标签自带的下划线 */
+a {
+    color: #000;
+    text-decoration: none;
+}
+
+/* 全局通用设置结束 */
+
+/* 内容设置开始 */
+
+/* 订阅部分设定
+    container为该部分父标签属性
+*/
+.container {
+    /* 同时设置max-width与width,适应多端显示
+       该属性设定大盒子在的中心版面的宽度,并居中对齐
+    */
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* 装饰按钮 */
+.btn {
+    padding: 0 20px;
+    height: 40px;
+    font-size: 1em;
+    font-weight: 700;
+    text-transform: uppercase;
+    border: 2px solid black;
+    border-radius: 2px;
+    /* 按钮背景色透明 */
+    background: transparent;
+    cursor: pointer;
+}
+
+/* 价格卡片处布局,使用flex布局 */
+.grid {
+    display: flex;
+}
+
+/* 头部布局,包括订阅与导航栏 */
+header {
+    /* 使用fixed属性, 固定位置 */
+    /* flex布局与justify-content align-tiems属性为一套使用 */
+    display: flex;
+    position: fixed;
+    top: 0;
+    min-height: 75px;
+    padding: 0px 20px;
+    /* space-around:元素位于各行之前、之间、之后都留有空白的容器内。 */
+    justify-content: space-around;
+    align-items: center;
+    background-color: #eee;
+}
+
+@media (max-width: 600px) {
+    header {
+        /* 媒体查询在显示宽度最大为600px时 flex布局项目进行换行 */
+        flex-wrap: wrap;
+    }
+}
+
+/* vw:视窗宽度 1vw=1%的视窗宽度 */
+.logo {
+    width: 60vw;
+}
+
+@media (max-width: 650px) {
+    .log {
+        position: relative;
+        margin-top: 15px;
+        width: 100%;
+    }
+}
+
+/* 注意,同时设定max-width和width时,max-width会覆盖width
+   因此,这种写法都在响应式的页面中出现
+*/
+.logo > img {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    /* 以上为flex一套组合拳,要一起写 */
+    text-align: center;
+    margin-left: 20px;
+    width: 100%;
+    max-width: 100px;
+}
+
+/* 当小屏的时候,Logo放到屏幕中间去· */
+@media (max-width: 650px) {
+    .logo > img {
+        margin: 0 auto;
+    }
+}
+
+nav {
+    font-weight: 400;
+}
+
+@media (max-width: 650px) {
+    nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 0 50px;
+        margin-top: 10px;
+        width: 100%;
+    }
+
+    nav li {
+        padding-bottom: 5px;
+    }
+}
+
+nav > ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    /* 占视窗的35%宽度 */
+    width: 35vw;
+}
+
+@media (max-width: 650px) {
+    /* 给父元素上就好了,继承性 */
+    nav > ul {
+        flex-direction: column;
+    }
+}
+
+/* 开始装饰订阅部分 */
+#hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 200px;
+    margin-top: 100px;
+}
+
+/* 修饰订阅标题 
+   word-wrap:允许长内容换行
+   只对英文有用
+*/
+#hero > h2 {
+    margin-bottom: 20px;
+    word-wrap: break-word;
+}
+
+/* 属性选择器[] */
+#hero input[type="email"] {
+    max-width: 350px;
+    width: 100%;
+    padding: 10px;
+}
+
+/* 可以注意到响应式布局max-width与width总是写在一起 */
+
+/* 修饰按钮 */
+#hero input[type="submit"] {
+    width: 100%;
+    max-width: 150px;
+    height: 30px;
+    margin: 15px 0;
+    /* 把边框去掉了 */
+    border: 0;
+    background-color: #f1c65f;
+}
+
+#hero input[type="submit"]:hover {
+    background-color: orange;
+    /* transition: 要变的属性,持续时间,变的方式 */
+    transition: background-color 1s;
+}
+
+/* 当屏幕变小的时候,让订阅那一个板块离导航栏远些 */
+@media (max-width: 650px) {
+    #hero {
+        margin-top: 200px;
+    }
+}
+
+/* 商品描述板块与订阅板块的距离 */
+#features {
+    margin-top: 30px;
+}
+
+/* 设定图标显示
+   flex布局
+*/
+#features .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 125px;
+    width: 20vw;
+    color: orange;
+}
+
+/* 屏幕变小的话设置不显示图标 */
+@media (max-width: 550px) {
+    #features .icon {
+        display: none;
+    }
+}
+
+/* flex设定商品修饰文本内容显示纵向显示 */
+#features .desc {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 125px;
+    width: 80vw;
+    padding: 5px;
+}
+
+/* 屏幕变小的话调整显示方式 */
+@media (max-width: 550px) {
+    #features .desc {
+        width: 100%;
+        text-align: center;
+        padding: 0;
+        height: 150px;
+    }
+}
+
+@media (max-width: 650px) {
+    #features {
+        margin-top: 0;
+    }
+}
+
+/* iframe标签的视频部分设定 */
+#how-it-works {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+/* 设定视频的最大宽度,注意,标签里面只能设定高度与是否全屏,还有边框尺寸 */
+#how-it-works > iframe {
+    max-width: 560px;
+    width: 100%;
+}
+
+#pricing {
+    /* flex布局, 牵连到的是3个product的div*/
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+.product {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    /* 这里用了calc函数,与var函数同理, calc是在css当中用于计算的函数
+       这里总共有3个product的div,因此各占33.3%   
+    */
+    width: calc(100% / 3);
+    margin: 10px;
+    border: 1px solid #000;
+    border-radius: 3px;
+}
+
+/* 设定商品卡片的标题部分 */
+.product > .level {
+    width: 100%;
+    color: #000;
+    padding: 15px 0;
+    text-transform: uppercase;
+    font-weight: 700;
+    background-color: orange;
+}
+
+/* 设定商品卡片的价格部分 */
+.product > h2 {
+    margin-top: 15px;
+}
+
+/* 设定商品卡片的描述部分 */
+.product > ol {
+    margin: 15px 0;
+}
+
+/* 设定商品卡片的每一行描述 */
+.product > ol > li {
+    padding: 5px 0;
+}
+
+/* 设定商品卡片的按钮 */
+.product > button {
+    margin: 15px 0;
+    border: 0;
+    background-color: orange;
+    font-weight: 400;
+}
+
+/* 当移动到按钮上时的表现
+   注意:transition: 属性 持续时间 显示效果 延迟;
+*/
+.product > button:hover {
+    background-color: #f1c40f;
+    transition: background-color 1s;
+}
+
+/* 当屏幕发生变化时
+   价格卡片整体容器更换flex显示为column
+   每个商品卡片.product,更换最大显示为300px,并居中显示
+*/
+@media (max-width: 800px) {
+    #pricing {
+        flex-direction: column;
+    }
+    .product {
+        max-width: 300px;
+        width: 100%;
+        margin: 0 auto;
+        margin-bottom: 10px;
+    }
+}
+
+/* 设定脚注部分 */
+footer {
+    margin-top: 30px;
+    background-color: #ddd;
+    padding: 20px;
+}
+
+/* 注意: flex布局是写在父元素容器上面的,不是子元素哟 */
+footer > ul {
+    display: flex;
+    justify-content: center;
+}
+
+/* 拉宽每个li之间的距离 */
+footer > ul > li {
+    padding: 0 10px;
+}
+
+/* 修改a里的文本颜色 */
+footer > ul > li > a {
+    color: #444;
+}
+
+/* 修改span的flex显示模式 */
+footer > span {
+    display: flex;
+    justify-content: center;
+    font-size: 1em;
+    margin-top: 5px;
+    color: #444;
+}

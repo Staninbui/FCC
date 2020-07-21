@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="ProductLandingPage.css">
+    <title>ProductLandingPage</title>
+</head>
+
+<body>
+    <!-- 用一个大盒子包裹全部内容 -->
+    <div id="page-wrapper">
+        <!-- 头部导航栏开始 -->
+        <header id="header">
+            <!-- 用一个盒子装LOGO -->
+            <div class="logo">
+                <img src="data:image/png;base64,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"
+                    alt="Gundam Fight Ready Go" id="header-img" />
+            </div>
+            <!-- 用一个nav标签装导航栏 -->
+            <nav id="nav-bar">
+                <ul>
+                    <!-- class是写到a里面的 -->
+                    <li><a class="nav-link" href="#News">News</a></li>
+                    <li><a class="nav-link" href="#Products">Products</a></li>
+                    <li><a class="nav-link" href="#Pricing">Pricing</a></li>
+                </ul>
+            </nav>
+            <!-- 导航栏结束 -->
+        </header>
+        <!-- 头部结束 -->
+        <!-- 订阅开始 -->
+        <div class="container">
+            <section id="hero">
+                <h2>Get some interesting toys you've never been thought</h2>
+                <form id="form" action="https://www.freecodecamp.com/email-submit">
+                    <label>
+                        Get Now<input id="email" name="email" type="email" placeholder="youremail" />
+                    </label>
+                    <input type="submit" id="submit" value="Get Started" class="btn">
+                </form>
+            </section>
+        </div>
+        <!-- 订阅结束 -->
+        <!-- 商品描述开始 -->
+        <div class="container">
+            <section id="features">
+                <div class="grid">
+                    <div class="icon"><i class="fa fa-3x fa-fire"></i></div>
+                    <div class="desc">
+                        <h2>Premium Materials</h2>
+                        <p>
+                            Our trombones use the shiniest brass which is sourced locally. This
+                            will increase the longevity of your purchase.
+                        </p>
+                    </div>
+                </div>
+                <div class="grid">
+                    <div class="icon"><i class="fa fa-3x fa-truck"></i></div>
+                    <div class="desc">
+                        <h2>Premium Materials</h2>
+                        <p>
+                            Our trombones use the shiniest brass which is sourced locally. This
+                            will increase the longevity of your purchase.
+                        </p>
+                    </div>
+                </div>
+                <div class="grid">
+                    <div class="icon"><i class="fa fa-3x fa-battery-full"></i></div>
+                    <div class="desc">
+                        <h2>Premium Materials</h2>
+                        <p>
+                            Our trombones use the shiniest brass which is sourced locally. This
+                            will increase the longevity of your purchase.
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <!-- 商品描述结束 -->
+            <section id="how-it-works">
+                <!-- 插入视频API -->
+                <!-- 这里的video使用的是iframe标签嵌入的 -->
+                <!-- iframe为内联框架元素 允许在其内部嵌套另一个HTML页面的面板 嵌入的面板完全独立,拥有自己的dom树和特性 -->
+                <iframe id="video" height="350"
+                    src="https://www.youtube-nocookie.com/embed/y8Yv4pnO7qc?rel=0&amp;controls=0&amp;showinfo=0"
+                    frameborder="0" allowfullscreen>
+                </iframe>
+            </section>
+            <!-- 插入视频API结束 -->
+            <!-- 价格板块开始 -->
+            <section id="pricing">
+                <div class="product" id="tenor">
+                    <div class="level">Tenor Trombone</div>
+                    <h2>$100</h2>
+                    <ul>
+                        <li>Lorem ipsum</li>
+                        <li>Lorem ipsum</li>
+                        <li>Lorem ipsum</li>
+                        <li>Lorem ipsum</li>
+                    </ul>
+                    <button class="btn">SELECT</button>
+                </div>
+                <div class="product" id="bass">
+                    <div class="level">Bass Trombone</div>
+                    <h2>$300</h2>
+                    <ul>
+                        <li>Lorem ipsum</li>
+                        <li>Lorem ipsum</li>
+                        <li>Lorem ipsum</li>
+                        <li>Lorem ipsum</li>
+                    </ul>
+                    <button class="btn">SELECT</button>
+                </div>
+                <div class="product" id="valve">
+                    <div class="level">Valve Trombone</div>
+                    <h2>$600</h2>
+                    <ul>
+                        <li>Lorem ipsum</li>
+                        <li>Lorem ipsum</li>
+                        <li>Lorem ipsum</li>
+                        <li>Lorem ipsum</li>
+                    </ul>
+                    <button class="btn">SELECT</button>
+                </div>
+            </section>
+            <!-- 价格板块结束 -->
+            <!-- 脚注开始 -->
+            <footer>
+                <ul>
+                    <li><a href="#">Privacy</a></li>
+                    <li><a href="#">Privacy</a></li>
+                    <li><a href="#">Privacy</a></li>
+                </ul>
+                <span>Copyright 2020</span>
+            </footer>
+            <!-- 脚注结束 -->
+        </div>
+    </div>
+</body>
+
+</html>
