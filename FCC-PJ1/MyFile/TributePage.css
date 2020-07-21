@@ -1,0 +1,115 @@
+html {
+    /* 设定根字体大小为10px 可以方便计算rem对应的单位 */
+    font-size: 10px;
+}
+
+body {
+    /* 行高计算,1.5*10*1.6=24px 推荐使用数字算法,避免继承时的不确定影响 
+       line-height:用于设置多行元素的空间量,块级元素用于指定元素之间的高度
+    */
+    font-size: 1.6rem;
+    line-height: 1.5;
+    /* text-align: 文本对齐,指定行内元素如何相对于块级父元素对齐.
+    该属性并不控制控制块级元素,只控制行内元素的内容.
+    常用属性:
+    left: 文本左对齐
+    center: 居中
+    right: 文本右对齐
+    justify: 文本两端对齐
+    inherit: 从父元素继承
+    */
+    text-align: center;
+    color: #333;
+    margin: 0;
+}
+
+h1 {
+    font-size: 4rem;
+    /* 由于设置了line-height,这里间隔太远了,就把margin-bottom去掉了 */
+    margin-bottom: 0;
+}
+
+@media (min-width: 576px) {
+    h1 {
+        font-size: 3.5rem;
+        line-height: 1.2;
+    }
+}
+
+h2 {
+    font-size: 3.25rem;
+}
+
+a {
+    color: #477ca7;
+}
+
+a:visited {
+    color: #74638f;
+}
+
+/* 设置页面整体 */
+#main {
+    margin: 30px 8px;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #f3f3f3;
+}
+
+@media (max-width: 576px) {
+    #main {
+        margin: 0;
+    }
+}
+
+img {
+    /* img为行内元素,转为块级元素之后才能使用width height margin等属性 */
+    display: block;
+    /* 这里设定为100%,就可以自适应父级元素自适应拉伸了 
+    这里图片是用的max-width:100% 意思是图片最大拉伸到原图片尺寸的最大宽度,
+    不会超出,但是如果用的是width:100% 就会将图片拉伸到父元素容器的宽度大小*/
+    max-width: 100%;
+    height: auto;
+    /* margin 块级元素,上下0,左右auto,对齐到中间 */
+    margin: 0 auto;
+}
+
+#img-div {
+    background-color: #fff;
+    padding: 10px;
+    margin: 0;
+}
+
+#img-caption {
+    margin: 15px 0 5px 0;
+}
+
+@media (max-width: 460px) {
+    #img-caption {
+        font-size: 1.4rem;
+    }
+}
+
+#headline {
+    margin: 50px 0;
+    text-align: center;
+}
+
+ul {
+    /* ul这里写了line-height,可以使其子元素li获得行高属性 */
+    max-width: 550px;
+    margin: 0 auto 50px auto;
+    text-align: left;
+    line-height: 2.5;
+}
+
+ul li {
+    margin: 16px 0;
+}
+
+blockquote {
+    font-style: italic;
+    max-width: 550px;
+    margin: 0 auto;
+    text-align: left;
+}
