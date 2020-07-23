@@ -1,0 +1,118 @@
+/* 全局Style设置 */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #eee;
+    color: #000;
+    line-height: 1.5;
+}
+
+#container {
+    position: relative;
+}
+
+/* 导航栏部分设置 */
+
+#navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 300px;
+    /* 这里高度要设定100%,要不然线就不到底了 */
+    height: 100%;
+    border: 1px solid rgba(0, 22, 22, 0.4);
+}
+
+header {
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-align: center;
+    margin: 10px;
+    color: gray;
+}
+
+#navbar ul {
+    line-height: 2;
+}
+
+#navbar ul li {
+    display: block;
+    list-style: none;
+    padding: 10px 30px;
+    cursor: pointer;
+}
+
+/* 这里的a标签显示模式要改成block,
+   这样才能使得边框线显示完全
+*/
+#navbar ul li a {
+    font-size: 1.2rem;
+    display: block;
+    padding-top: 10px;
+    text-decoration: none;
+    text-align: center;
+    color: #fff;
+    background-color: orange;
+    border: 1px solid #000;
+    word-wrap: break-word;
+}
+/* 导航栏结束 */
+
+/* 正文开始 */
+
+#main-doc {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+#main-doc header {
+    text-align: left;
+}
+
+section article {
+    margin: 10px;
+    font-size: 1rem;
+}
+
+section li {
+    margin: 15px 0px 0px 20px;
+}
+
+code {
+    display: block;
+    text-align: center;
+    margin: 10px;
+    padding: 15px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    font-size: 1.3rem;
+    background-color: #f7f7f7;
+    line-height: 2;
+}
+
+/* 移动端配置 */
+
+@media screen and (max-width: 576px) {
+    #navbar {
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+        border: none;
+    }
+
+    #main-doc {
+        position: relative;
+        border-top: 3px solid #000;
+        margin-left: 0px;
+        margin-top: 450px;
+    }
+}
