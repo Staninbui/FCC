@@ -1,0 +1,412 @@
+/* 自定义变量属性 */
+:root {
+    --main-blue: #111d5e;
+    --main-red: #c70039;
+    --main-orange: #f37121;
+    --main-yellow: #ffbd69;
+}
+
+/* 设定预设属性 */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* 利用*的before和after伪类设定盒子属性或背景 */
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+/* html根目录大于* 因此*处设定inherit继承
+   此处设定全局字体大小为62.5%,方便rem计算
+   (100%/16px)*10 = 62.5%,相当于1rem=10px;
+   1em
+   默认根字体大小为16px
+*/
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+    /* scroll-behavior: 滚动表现
+    用于指定用户滚动页面时,页面的滚动表现情况.
+    默认为auto;即正常往下滚动.
+    smooth:平滑滚动,能感觉到像是在溜冰
+    ; */
+    scroll-behavior: smooth;
+}
+
+/* 设定响应式属性
+   关键在于单位的设置,一般都用rem来设定,
+   因为rem是相对于document的单位,因此在
+   放大或者缩小页面时,rem单位比较容易操控和显示,失误率低.
+*/
+
+/* 设定大pad屏幕时显示的字体大小 1200px
+    1200px/16px=75em;
+    这里使用em的目的是用来设定一个页面不同部分之间的
+    断点,就是切换的那一块.用rem的话就不那么精确了(因为rem会变);
+*/
+@media (max-width: 75em) {
+    html {
+        /* 这里看感觉设的 */
+        font-size: 60%;
+    }
+}
+
+/* 980px/16px=61.25 普通pad屏幕*/
+@media (max-width: 61.25em) {
+    html {
+        font-size: 58%;
+    }
+}
+
+/* 460px/16px=28.75em 手机屏幕 */
+@media (max-width: 28.75em) {
+    html {
+        font-size: 55%;
+    }
+}
+
+/* 设定全局属性 */
+
+body {
+    font-family: "Poppins", sans-serif;
+    /* 这里是18px */
+    font-size: 1.8rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--main-blue);
+}
+
+h1,
+h2 {
+    font-family: "Raleway", sans-serif;
+    font-weight: 700;
+    text-align: center;
+}
+
+h1 {
+    /* 16px*6=96px */
+    /* h1原始96px */
+    font-size: 6rem;
+}
+
+h2 {
+    /* 16px*4.2=67.2px */
+    font-size: 4.2rem;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: var(--main-yellow);
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+/* 以上全局属性,包括字体font类,a的text-decoration
+   li的list-style img的display:block等都是必设属性
+*/
+
+/* 导航栏开始 */
+
+/* flex布局 
+   flex布局要求父盒子要使用flex,这里.nav为父盒子
+   后续子元素布局也要写flex的
+*/
+.nav {
+    display: flex;
+    flex-direction: row;
+    /* 把导航条往右边塞 */
+    justify-content: flex-end;
+    position: fixed;
+    left: 0;
+    top: 0;
+    /* 占满屏幕宽度 */
+    width: 100%;
+    background-color: var(--main-blue);
+    /* 盒子阴影 x轴 y轴 大小 颜色 */
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.4);
+    /* 为了让导航条能够一直被看到 */
+    z-index: 20;
+}
+
+/* flex父盒子写了,子盒子要记得写flex
+   这里flex是以row为条件平铺展开并且不会换行,
+   要看情况看是否使用flex-wrap;
+*/
+.nav-list {
+    display: flex;
+    margin-right: 2rem;
+}
+
+/* 媒体查询设定手机屏时导航栏的显示效果 */
+
+/* 460/16=28.75 */
+@media (max-width: 28.75em) {
+    .nav {
+        justify-content: center;
+    }
+    .nav-list {
+        margin-right: 0 1rem;
+    }
+}
+
+/*  a为行内元素,改为block之后才能管到高度,
+    才能让padding的上下撑开起到最用
+    */
+.nav-list a {
+    display: block;
+    font-size: 2.2rem;
+    padding: 2rem;
+}
+
+/* 给鼠标放上去的事件加一个渐变效果,更好看 */
+.nav-list a:hover {
+    background-color: var(--main-red);
+    color: #fff;
+    transition: all 0.5s;
+}
+
+/* 导航栏部分结束 */
+
+/* 欢迎部分开始 */
+
+.welcome-section {
+    /* flex布局中justify-content是负责容器盒子布局的
+       而align-items是负责元素布局的
+       vw,vh为动态单位,100意思为占据100%的视口大小 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(90deg, #ffbd69 0%, #f37121 100%);
+    color: #fff;
+}
+
+/* 设定标题 */
+.welcome-section > h1 {
+    font-size: 7rem;
+    text-shadow: 3px 3px 1px rgba(0, 0, 0, 0.4);
+}
+
+/* 设定副标题 */
+.welcome-section > p {
+    font-size: 3.5rem;
+    font-style: italic;
+    font-weight: 500;
+    color: var(--main-blue);
+}
+
+/* 项目部分开始 */
+
+.projects-section {
+    /* 调节整个项目区块 */
+    /* 因为包裹的都是a tag 所以可以用text-align来让
+       下面的元素居中对齐
+    */
+    text-align: center;
+    padding: 10rem 2rem;
+    background: var(--main-red);
+}
+
+/* 调节项目区块标题部分 
+    最大宽度用于适应小屏幕和pad
+*/
+.projects-section-header {
+    max-width: 64rem;
+    margin: 0 auto 6rem auto;
+    color: #f0f0f0;
+    border-bottom: 0.2rem solid #f0f0f0;
+    text-shadow: 5px 5px 2px rgba(0, 0, 0, 0.4);
+}
+
+/* 手机屏460px 460/16=28.75em */
+@media (max-width: 28.75em) {
+    .projects-section-header {
+        font-size: 4rem;
+    }
+}
+
+/* 项目栈格化布局 */
+.projects-grid {
+    /* grid布局组合拳,打一套才有效果
+       display:grid;
+       显示模式改为grid显示
+       grid-template-columns(或者rows): 第一个的宽度宽度,第二个的宽度,...第n个的宽度,想有几个写几个, 单位常用px,fr(份数);
+       上述属性还有单位minmax(100px,1fr)这种,表示最小100,最大1份.
+       当然,更加简洁的应用重复性的卡片式的布局,可以使用repeat(auto-fit,minmax())的写法快速布局;
+       grid-gap: (距离范围) 用于卡片之间的间隔(上下左右)大小,会计入grid-template-columns(rows)的计算里;
+       以上都写才为基本的grid布局组合拳
+       其他招式:
+       grid-template-areas:     
+       "a a b"
+       "a a b";
+       这种直接写好布局样式的方式可以使用,可以更精准控制栈格的分布.
+    */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-gap: 8rem;
+    width: 100%;
+    /* 设置栈格总最大宽度 */
+    max-width: 1280px;
+    /* 整个栈格放到中间去 */
+    margin: 0 auto;
+    margin-bottom: 6rem;
+}
+
+/* 适应手机屏幕 490px/16 = 30.625 */
+@media (max-width: 30.625em) {
+    .projects-section {
+        padding: 6rem 1rem;
+    }
+    .projects-grid {
+        /* 手机的时候,按列来排,一排放一个 */
+        grid-template-columns: 1fr;
+    }
+}
+
+.project {
+    background: var(--main-blue);
+    box-shadow: 5px 5px 1px rgba(0, 0, 0, 0.5);
+    border-radius: 3px;
+}
+
+.code {
+    color: var(--main-orange);
+}
+
+.project:hover .code {
+    color: var(--main-red);
+    transition: all 0.4s;
+}
+
+.project:hover p {
+    color: #fff;
+    transition: all 0.4s;
+}
+
+.project-image {
+    /* calc能在css当中执行简单的数学计算
+    一般用于响应布局
+    object-fit属性指定元素内容如何适应到
+    其容器内.
+    属性值有: contain: 缩放填充,保持填充元素的宽高比,不和尺寸的话会有黑边;
+            cover: 保持宽高比拉伸填满盒子,超过的话将被裁剪
+            fill: 拉伸到盒子装满,无视宽高比,可能变形
+            none: 直接放进去啥都不做
+            scale-down: none+contain,当中谁的尺寸小就取谁,相当于缩放.
+    */
+    height: calc(100% - 6.8rem);
+    width: 100%;
+    object-fit: cover;
+}
+
+.project-title {
+    font-size: 2rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    border-radius: 2px;
+}
+
+.btn-show-all {
+    font-size: 3rem;
+    background: var(--main-blue);
+    transition: all 0.3s ease-out;
+}
+
+.btn-show-all:hover {
+    background: var(--main-orange);
+    color: #fff;
+}
+
+.btn-show-all > i {
+    margin-left: 10px;
+    transform: translateX(0) rotateX(0);
+    transition: transform 0.3s ease-out;
+}
+
+.btn-show-all:hover > i {
+    transform: translateX(2px) rotateX(30deg);
+}
+
+/* 联络板块 */
+
+.contact-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    /* 留点空间给底部 */
+    height: 80vh;
+    padding: 0 2rem;
+    background: var(--main-blue);
+}
+
+.contact-section-header > h2 {
+    font-size: 6rem;
+    color: #fff;
+    text-shadow: 3px 3px 1px rgba(0, 0, 0, 0.4);
+}
+
+/* 适应手机屏幕 */
+@media (max-width: 28.75em) {
+    .contact-section-header > h2 {
+        font-size: 4rem;
+    }
+}
+
+.contact-section-header > p {
+    font-style: italic;
+    color: #fff;
+}
+
+.contact-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 980px;
+    margin-top: 4rem;
+}
+
+.contact-details {
+    font-size: 2.4rem;
+    color: #fff;
+    text-shadow: 3px 3px 1px #1f1f1f;
+    transition: transform 0.5s ease-in-out;
+}
+
+.contact-details:hover {
+    transform: translateY(8px) scale(1.2);
+}
+
+/* 脚注开始 */
+
+footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+    border-top: 4px solid var(--main-red);
+}
+
+footer > p {
+    font-size: 3rem;
+    margin-top: 2rem;
+}
